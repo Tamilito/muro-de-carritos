@@ -1,0 +1,83 @@
+name: Compilar APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bajar el proyecto
+        uses: actions/checkout@v4
+
+      - name: Acomodar archivos si se subieron dentro de una carpeta
+        run: |
+          if [ ! -f package.json ] && [ -f muro-de-carritos-app/package.json ]; then
+            cp -r muro-de-carritos-app/. .
+          fi
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Preparar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Instalar Capacitor
+        run: npm install --no-audit --no-fund
+
+      - name: Tipografías para usar sin internet (opcional)
+        continue-on-error: true
+        run: node scripts/fuentes.js
+
+      - name: Crear el proyecto Android
+        run: |
+          npx cap add android
+          npx cap sync android
+
+      - name: Ícono, pantalla de inicio y firma fija
+        run: |
+          cp -r recursos/res/. android/app/src/main/res/
+          for d in android/app/src/main/res/drawable*; do
+            if [ -f "$d/splash.png" ]; then
+              case "$d" in
+                *land*) cp recursos/splash-land.png "$d/splash.png" ;;
+                *) cp recursos/splash-port.png "$d/splash.png" ;;
+              esac
+            fi
+          done
+          mkdir -p "$HOME/.android"
+          cp recursos/debug.keystore "$HOME/.android/debug.keystore"
+
+      - name: Compilar el APK
+        working-directory: android
+        run: |
+          export ANDROID_USER_HOME="$HOME/.android"
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Ponerle nombre
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk muro-de-carritos.apk
+
+      - name: Guardar como archivo de la ejecución
+        uses: actions/upload-artifact@v4
+        with:
+          name: muro-de-carritos-apk
+          path: muro-de-carritos.apk
+
+      - name: Publicar en Releases para bajarlo desde el celular
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: apk-${{ github.run_number }}
+          name: Muro de Carritos (versión ${{ github.run_number }})
+          files: muro-de-carritos.apk
+          make_latest: true

@@ -1,0 +1,9 @@
+{
+  "appId": "mx.murodecarritos.app",
+  "appName": "Muro de Carritos",
+  "webDir": "www",
+  "android": {
+    "adjustMarginsForEdgeToEdge": "auto",
+    "backgroundColor": "#2A2D32"
+  }
+}

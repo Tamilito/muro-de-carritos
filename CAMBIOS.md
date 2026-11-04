@@ -5,8 +5,20 @@ Cómo se numeran las versiones (X.Y.Z):
 - **Y** sube con funciones nuevas (1.1 → 1.2).
 - **X** sube con un cambio grande que rehace la app (1.x → 2.0).
 
-La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.4.1';`.
+La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.5.0';`.
 GitHub la lee de ahí para nombrar el APK y el Release. El número de compilación sube solo.
+
+## 1.5.0 (4 nov 2026)
+- **Todo en tu teléfono, sin servidor.** Tus muros, carritos y fotos nunca salen del teléfono. Lo único que usa internet es buscar actualizaciones de la app.
+- **Editor simple por defecto**: foto, nombre, color, qué es, tipo, serie, número, año, dónde va y notas.
+- **Edición avanzada** (se prende en Ajustes): agrega cinco secciones para dejar el dibujo igual al carrito:
+  - Pintura: acabado brillante, metálico, mate o cromo; segundo color en el techo o abajo; tomar un color de una foto con el gotero.
+  - Decoración: franja, dos franjas, banda ancha, llamas, degradado, cuadros o arte/grafiti, con dos colores; número de carreras.
+  - Rines: 5 rayos, 10 rayos, 5 hoyos, malla, disco o todo terreno; color; tamaño y traseros más grandes.
+  - Forma y postura: más alto o más bajo, más largo o más corto, alerón, motor de fuera y vidrios (claros, polarizados, cromados o ámbar).
+  - Blíster: Treasure Hunt o Super TH, color del cartón y blíster grande.
+- Ajustes → Respaldo dice cuándo guardaste tu último respaldo. Como todo vive en el teléfono, si desinstalas la app se borra: el respaldo es tu copia.
+- La foto del muro ahora usa exactamente el mismo dibujo que la pantalla.
 
 ## 1.4.1 (4 nov 2026)
 - **Ajustes** en el engrane de arriba a la derecha: respaldo, Subir varias fotos, versión y Buscar actualización. Antes estaban hasta abajo del garaje, después de todos los carritos, y no se encontraban.

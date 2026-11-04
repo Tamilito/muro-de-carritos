@@ -38,7 +38,7 @@
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+body{overflow-x:clip;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 #app{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 140px;max-width:1720px;margin:0 auto}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -95,7 +95,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* ---------- barra de vista ---------- */
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;padding-block:0 12px}
-.toolbar .group{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.toolbar .group{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;min-width:0;max-width:100%}
 .seg{display:inline-flex;flex-wrap:wrap;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
 .seg button{border:0;background:transparent;min-height:32px;padding:0 13px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.14)}
@@ -191,7 +191,7 @@ h1,h2,h3{text-wrap:balance}
 html.sheet-open,html.sheet-open body{overflow:hidden}
 html.is-dragging,html.is-dragging *{cursor:grabbing!important;user-select:none;-webkit-user-select:none}
 .board{user-select:none;-webkit-user-select:none}
-.ctl{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:3px 12px 3px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface-2)}
+.ctl{display:inline-flex;align-items:center;gap:8px;min-height:38px;max-width:100%;min-width:0;box-sizing:border-box;padding:3px 12px 3px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface-2)}
 .ctl .seg-label{white-space:nowrap}
 .ctl input[type=range]{width:112px;accent-color:var(--accent);margin:0}
 .ctl output{font-family:var(--f-mono);font-size:11px;color:var(--ink);min-width:7.5ch;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -200,7 +200,9 @@ html.is-dragging,html.is-dragging *{cursor:grabbing!important;user-select:none;-
 .ctl .sws button{width:20px;height:20px;border-radius:6px;border:1px solid rgba(0,0,0,.22);padding:0}
 .ctl .sws button[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:2px}
 .tope{font-size:12px;color:var(--warn);margin:0}
-@media (max-width:560px){.ctl{width:100%;justify-content:space-between}.ctl input[type=range]{flex:1;width:auto}}
+@media (max-width:560px){.toolbar .group{width:100%}.ctl{width:100%;justify-content:space-between}.ctl input[type=range]{flex:1;width:auto}
+  .ctl .sws{flex:1 1 0;min-width:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;justify-items:center}
+  .ctl .sws button{width:100%;height:auto;max-width:26px;aspect-ratio:1}}
 
 /* ---------- paneles ---------- */
 .panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}
@@ -317,8 +319,16 @@ html.is-dragging,html.is-dragging *{cursor:grabbing!important;user-select:none;-
 .toast button{border:0;background:transparent;color:var(--accent);font-weight:700;padding:4px 6px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:560px){
-  .brand h1{font-size:30px}
-  .actions .status{order:9;width:100%;padding:0}
+  .top{flex-wrap:nowrap;gap:10px;padding-block:8px 8px}
+  .brand{flex:1 1 auto;gap:8px}
+  .brand>div:last-child{min-width:0}
+  .mark{transform:scale(.75);transform-origin:center;margin:0 -4px}
+  .brand h1{font-size:clamp(19px,6.2vw,26px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand p{font-size:9.5px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .top .actions{flex:none;flex-wrap:nowrap;gap:6px}
+  .top .btn.icon{width:34px;min-height:34px}
+  .top .status{padding:0 2px}
+  .top .status .st-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .sheet{top:auto;height:92%;width:100%;border-left:0;border-top:1px solid var(--line);border-radius:18px 18px 0 0;padding-left:env(safe-area-inset-left,0px)}
   .fields .f.third{grid-column:span 3}
 }
@@ -478,7 +488,7 @@ function newId(p){return p+Math.random().toString(36).slice(2,7)+Date.now().toSt
 var ui={zoom:null,moving:null,sheet:null,form:null,formErr:'',confirmDel:false,menu:null,editing:null,modal:null,photo:null,banner:null,cap:'pending',readOnly:false,saving:false,toast:null,confirmRevert:false,importErr:'',fotos:true,filesOpen:false,wallColor:'#2a2d32',blur:0,vis:40};
 var hist=[],fut=[];
 var ART=null,DL=null,retried=false;
-var APP_VERSION='1.2.0';
+var APP_VERSION='1.2.1';
 var STANDALONE=!(window.claude&&typeof window.claude.use==='function');
 var CAPN=window.Capacitor,IN_APP=!!(CAPN&&typeof CAPN.isNativePlatform==='function'&&CAPN.isNativePlatform()),PLG=IN_APP?(CAPN.Plugins||{}):{};
 var FOLDER=STANDALONE&&!IN_APP;
@@ -728,7 +738,7 @@ function fmtFecha(iso){try{var d=new Date(iso);return d.toLocaleDateString('es-M
 
 function renderHeader(){
   var t=totals();
-  $('#brandSub').textContent=t.n+' piezas · '+state.columnas.length+' columnas · escala 1:64 · v'+APP_VERSION;
+  $('#brandSub').textContent='v'+APP_VERSION+' · '+t.n+' piezas · '+state.columnas.length+' columnas · escala 1:64';
   var d=isDirty(),st,cls;
   if(ui.saving){st='Guardando…';cls='saving'}
   else if(ui.cap==='pending'){st=d?'Cambios sin guardar':'Listo';cls=d?'dirty':'ok'}
@@ -741,7 +751,7 @@ function renderHeader(){
   $('#hdrActions').innerHTML=
     '<button class="btn icon" data-act="undo" '+(hist.length?'':'disabled')+' aria-label="Deshacer" title="Deshacer (Ctrl+Z)">'+I.undo+'</button>'+
     '<button class="btn icon" data-act="redo" '+(fut.length?'':'disabled')+' aria-label="Rehacer" title="Rehacer (Ctrl+Shift+Z)">'+I.redo+'</button>'+
-    '<span class="status '+cls+'"><i></i>'+esc(st)+'</span>'+
+    '<span class="status '+cls+'" title="'+esc(st)+'"><i></i><span class="st-t">'+esc(st)+'</span></span>'+
     (canSave?'<button class="btn primary" data-act="save" '+(d&&!ui.saving?'':'disabled')+' title="Guardar (Ctrl+S)">Guardar muro</button>':'');
 }
 

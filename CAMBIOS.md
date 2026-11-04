@@ -5,8 +5,14 @@ Cómo se numeran las versiones (X.Y.Z):
 - **Y** sube con funciones nuevas (1.1 → 1.2).
 - **X** sube con un cambio grande que rehace la app (1.x → 2.0).
 
-La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.2.0';`.
+La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.2.1';`.
 GitHub la lee de ahí para nombrar el APK y el Release. El número de compilación sube solo.
+
+## 1.2.1 (4 nov 2026)
+- En el celular, el encabezado ahora es una sola línea delgada (título, deshacer, rehacer y un punto de guardado). Antes ocupaba casi un cuarto de la pantalla y el muro se veía pasar por debajo.
+- La barra de Muro ya no se sale de la pantalla en celulares angostos: los colores rápidos se encogen para caber, y nada se asoma a un lado del encabezado.
+- La versión va primero en el subtítulo para que siempre se vea.
+- Primera versión que llega por actualización, sin APK.
 
 ## 1.2.0 (4 nov 2026)
 - Actualizaciones por internet: la app baja `www/index.html` del repo de GitHub y se actualiza sola, sin instalar otro APK.

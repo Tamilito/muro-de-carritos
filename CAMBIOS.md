@@ -5,8 +5,14 @@ Cómo se numeran las versiones (X.Y.Z):
 - **Y** sube con funciones nuevas (1.1 → 1.2).
 - **X** sube con un cambio grande que rehace la app (1.x → 2.0).
 
-La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.2.1';`.
+La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.2.2';`.
 GitHub la lee de ahí para nombrar el APK y el Release. El número de compilación sube solo.
+
+## 1.2.2 (4 nov 2026)
+- Alejar, Tamaño y Separación: además de la barra, el número se puede escribir para poner un valor exacto. Si escribes algo fuera de rango se ajusta al límite (Separación no baja de 30 %).
+- Las tres barras usan las mismas unidades que el número: Alejar de 0 a 100 %, Tamaño de 50 a 120 %, Separación de 30 a 150 % (arriba de 100 % se ve cuánto aire queda entre blísters).
+- En el celular, cada barra va en dos renglones: nombre y número arriba, barra abajo a todo lo ancho. Ya no se sale el texto del recuadro.
+- «Fotos: Sí / No» ahora es «Imagen: Catálogo / Mis fotos». Catálogo = blíster de la base de datos (por ahora, el dibujo). Mis fotos = las fotos que tomes de tus carritos; los que no tengan foto usan la del catálogo.
 
 ## 1.2.1 (4 nov 2026)
 - En el celular, el encabezado ahora es una sola línea delgada (título, deshacer, rehacer y un punto de guardado). Antes ocupaba casi un cuarto de la pantalla y el muro se veía pasar por debajo.

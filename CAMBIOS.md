@@ -5,8 +5,22 @@ Cómo se numeran las versiones (X.Y.Z):
 - **Y** sube con funciones nuevas (1.1 → 1.2).
 - **X** sube con un cambio grande que rehace la app (1.x → 2.0).
 
-La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.2.2';`.
+La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.3.0';`.
 GitHub la lee de ahí para nombrar el APK y el Release. El número de compilación sube solo.
+
+## 1.3.0 (4 nov 2026)
+- **Varios muros**, como mazos: arriba hay una fila con tus muros (Muro 1, Muro 2…) y el botón «+ Muro». Toca el muro activo para cambiarle el nombre ("Muro de la sala") o eliminarlo; sus carritos pasan a la bandeja.
+- Cada muro guarda su propio color y su separación. La bandeja es una sola, compartida por todos.
+- Pasar carritos entre muros: en el editor del carrito, «Dónde va» lista las columnas de todos los muros; eliges la columna del otro muro y se va directo. Sale un aviso con «Ver ese muro».
+- **Tipos de vehículo** nuevos con su dibujo: SUV o 4x4, van o combi, autobús, camión o tráiler, moto y monster truck.
+- **Blíster grande** (para monster trucks y similares): el blíster sale 20 % más grande en el muro y en la foto, y el tope del 30 % visible se respeta igual. Al elegir Monster truck se marca solo.
+- El coach avisa cuando hay una sola moto, monster o vehículo de trabajo entre coches, para que los juntes.
+- **Tu biblioteca de fotos**: con «Importar fotos», las fotos que no tienen carrito todavía se guardan aparte. Al agregar un carrito, en cuanto escribes su nombre la foto se pone sola.
+- Al escribir el nombre de uno que ya tienes, te lo muestra con «Copiar datos» para no capturar todo otra vez (útil para repetidos).
+- Si eliminas un carrito con foto, la foto se queda en tu biblioteca.
+- El respaldo ahora incluye todos los muros y la biblioteca.
+- La foto del muro lleva el nombre del muro como título.
+- Limpieza de «Acomodo rápido»: se quitaron «Ver los nombres de archivo», «Copiar los que faltan» y «Volver al muro original». «Importar fotos» ahora se llama «Subir varias fotos».
 
 ## 1.2.2 (4 nov 2026)
 - Alejar, Tamaño y Separación: además de la barra, el número se puede escribir para poner un valor exacto. Si escribes algo fuera de rango se ajusta al límite (Separación no baja de 30 %).

@@ -5,8 +5,24 @@ Cómo se numeran las versiones (X.Y.Z):
 - **Y** sube con funciones nuevas (1.1 → 1.2).
 - **X** sube con un cambio grande que rehace la app (1.x → 2.0).
 
-La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.3.0';`.
+La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.4.1';`.
 GitHub la lee de ahí para nombrar el APK y el Release. El número de compilación sube solo.
+
+## 1.4.1 (4 nov 2026)
+- **Ajustes** en el engrane de arriba a la derecha: respaldo, Subir varias fotos, versión y Buscar actualización. Antes estaban hasta abajo del garaje, después de todos los carritos, y no se encontraban.
+- Cuando hay una versión nueva lista, el engrane muestra un punto naranja y Ajustes trae el botón «Actualizar a la versión…» hasta arriba.
+- En la app ya no sale el punto de "Guardado en el teléfono": siempre se guarda solo.
+
+## 1.4.0 (4 nov 2026)
+- **Menú abajo** con dos secciones: **Mi garaje** y **Mis muros**. La app recuerda en cuál estabas.
+- **Mi garaje**: todos tus carritos, de todos los muros y la bandeja, en tarjetas con su blíster, nombre, dónde está, serie, color, año y si es real u original. Tocar la tarjeta abre el editor; «Ver» te lleva a su muro y lo ilumina.
+- **Buscar** en el garaje por nombre, serie, número, color, año, muro o columna (puedes combinar palabras: "mach azul"). Filtros: Todos, Reales, Originales, De película y En la bandeja.
+- Botón redondo «+» en el garaje para agregar un carrito.
+- En el garaje también están las estadísticas (lo que antes era Inventario) y Respaldo y fotos (respaldo, Subir varias fotos y la versión).
+- **Acomodar** (antes «Acomodo rápido»), con botones: columnas de mayor a menor, de menor a mayor, en campana y cortas al centro; color de oscuro a claro y de claro a oscuro; reales primero. Todo se puede deshacer.
+- Arreglado: al cambiar el nombre de una columna, el cuadro de texto se escondía detrás de los blísters. Ahora sale encima y más grande en el celular.
+- Arreglado: el cuadro «Este muro» se veía amontonado en algunos celulares. Ahora el título va en una línea con la X en la esquina, solo dice cuántos carritos y columnas tiene, y los botones son del mismo tamaño.
+- Se quitaron los textos de indicaciones (cómo arrastrar, qué revisa el coach, etc.) y el botón «Volver a la versión del APK».
 
 ## 1.3.0 (4 nov 2026)
 - **Varios muros**, como mazos: arriba hay una fila con tus muros (Muro 1, Muro 2…) y el botón «+ Muro». Toca el muro activo para cambiarle el nombre ("Muro de la sala") o eliminarlo; sus carritos pasan a la bandeja.

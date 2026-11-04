@@ -44,9 +44,19 @@ Tarda unos 5 a 8 minutos. Cuando salga la palomita verde, ya está.
 
 ## Actualizar la app
 
-Cuando tengas una versión nueva del muro (`index.html`):
-1. En GitHub entra a la carpeta `www` → **Add file → Upload files** → sube el `index.html` nuevo → **Commit changes**.
-2. Se compila solo. Baja el APK nuevo de **Releases** e instálalo encima. Tu muro no se borra.
+Desde la versión 1.2.0 la app se actualiza sola, sin instalar otro APK:
+1. En GitHub entra a la carpeta `www` → **Add file → Upload files** → sube el `index.html` nuevo → **Commit changes**
+   (o desde la terminal: `git add www/index.html && git commit -m "v1.x.x" && git push`).
+2. La app revisa GitHub al abrirse y al regresar a ella (cada 3 horas como máximo, con wifi).
+   Si hay versión nueva la baja, te avisa con «Actualizar ya» y, si no lo tocas, se pone sola la siguiente vez que la abras.
+3. Para no esperar: panel «Acomodo rápido» → **Buscar actualización**.
+
+Esto solo funciona si el repo es **público** (GitHub no deja que la app lea un repo privado).
+Si una versión nueva truena al abrir, cierra la app y ábrela otra vez: regresa sola a la anterior.
+También está el botón **Volver a la versión del APK**.
+
+Cuándo sí hay que instalar un APK nuevo: si cambia algo nativo (ícono, nombre de la app, plugins nuevos)
+o si Claude te lo dice. Instalar un APK siempre regresa a la versión que trae adentro; luego se actualiza sola otra vez.
 
 ## Importante
 

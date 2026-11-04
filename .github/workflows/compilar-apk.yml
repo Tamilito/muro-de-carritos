@@ -19,6 +19,23 @@ jobs:
         run: |
           if [ ! -f package.json ] && [ -f muro-de-carritos-app/package.json ]; then
             cp -r muro-de-carritos-app/. .
+            echo "OTA_DIR=muro-de-carritos-app/www" >> "$GITHUB_ENV"
+          else
+            echo "OTA_DIR=www" >> "$GITHUB_ENV"
+          fi
+
+      - name: Leer la versión del muro
+        run: |
+          VER=$(grep -oP "APP_VERSION='\K[0-9.]+" www/index.html || echo "1.0.0")
+          echo "VER=$VER" >> "$GITHUB_ENV"
+          echo "Versión del muro: $VER"
+
+      - name: Decirle a la app de dónde bajar sus actualizaciones
+        run: |
+          sed -i "s#^var OTA_REPO='', OTA_BRANCH='main', OTA_DIR='www';#var OTA_REPO='${{ github.repository }}', OTA_BRANCH='${{ github.ref_name }}', OTA_DIR='$OTA_DIR';#" www/index.html
+          grep -n "^var OTA_REPO=" www/index.html || echo "::warning::Este index.html no trae actualizaciones automáticas (es de antes de la 1.2.0)."
+          if [ "${{ github.event.repository.private }}" = "true" ]; then
+            echo "::warning::El repo es privado: la app no podrá bajar actualizaciones solas. Hazlo público en Settings > General > Danger Zone > Change visibility."
           fi
 
       - name: Preparar Node
@@ -43,6 +60,8 @@ jobs:
         run: |
           npx cap add android
           npx cap sync android
+          sed -i -E "s/versionCode [0-9]+/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"$VER\"/" android/app/build.gradle
+          grep -E "versionCode|versionName" android/app/build.gradle
 
       - name: Ícono, pantalla de inicio y firma fija
         run: |
@@ -66,18 +85,19 @@ jobs:
           ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Ponerle nombre
-        run: cp android/app/build/outputs/apk/debug/app-debug.apk muro-de-carritos.apk
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk "muro-de-carritos-v$VER.apk"
 
       - name: Guardar como archivo de la ejecución
         uses: actions/upload-artifact@v4
         with:
           name: muro-de-carritos-apk
-          path: muro-de-carritos.apk
+          path: muro-de-carritos-v${{ env.VER }}.apk
 
       - name: Publicar en Releases para bajarlo desde el celular
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: apk-${{ github.run_number }}
-          name: Muro de Carritos (versión ${{ github.run_number }})
-          files: muro-de-carritos.apk
+          tag_name: v${{ env.VER }}-${{ github.run_number }}
+          name: Muro de Carritos v${{ env.VER }}
+          body: "Versión ${{ env.VER }} · compilación ${{ github.run_number }}. Los cambios de cada versión están en CAMBIOS.md."
+          files: muro-de-carritos-v${{ env.VER }}.apk
           make_latest: true

@@ -5,8 +5,15 @@ Cómo se numeran las versiones (X.Y.Z):
 - **Y** sube con funciones nuevas (1.1 → 1.2).
 - **X** sube con un cambio grande que rehace la app (1.x → 2.0).
 
-La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.6.0';`.
+La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.7.0';`.
 GitHub la lee de ahí para nombrar el APK y el Release. El número de compilación sube solo.
+
+## 1.7.0 (5 nov 2026)
+- **Fotos del auto en Mi garaje**: hasta 3 por carrito (por ejemplo de frente, de lado y de atrás). Botón «Fotos» en cada tarjeta; puedes elegir varias de un jalón y la app les quita el fondo.
+- La tarjeta del garaje muestra las fotos del auto y se deslizan de lado, con puntitos. Al tocarlas se abre el visor: pasar entre fotos, «Hacer principal», «Quitar esta» y «Agregar».
+- **En el muro se usa la foto del blíster**, que es aparte: se sube desde el editor del carrito («Foto del blíster») y se ve con Imagen: Mis fotos. Si un carrito no tiene fotos del auto, el garaje muestra su blíster.
+- Tocar el nombre en la tarjeta del garaje abre el editor.
+- El respaldo incluye también las fotos del auto.
 
 ## 1.6.0 (4 nov 2026)
 - La app ahora se llama **Colección de autos**, con ícono nuevo (el auto derrapando, sin fondo) y pantalla de inicio nueva. El nombre y el ícono del teléfono cambian al instalar el APK de esta versión; tus datos se quedan.

@@ -85,19 +85,19 @@ jobs:
           ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Ponerle nombre
-        run: cp android/app/build/outputs/apk/debug/app-debug.apk "muro-de-carritos-v$VER.apk"
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk "coleccion-de-autos-v$VER.apk"
 
       - name: Guardar como archivo de la ejecución
         uses: actions/upload-artifact@v6
         with:
-          name: muro-de-carritos-apk
-          path: muro-de-carritos-v${{ env.VER }}.apk
+          name: coleccion-de-autos-apk
+          path: coleccion-de-autos-v${{ env.VER }}.apk
 
       - name: Publicar en Releases para bajarlo desde el celular
         uses: softprops/action-gh-release@v3
         with:
           tag_name: v${{ env.VER }}-${{ github.run_number }}
-          name: Muro de Carritos v${{ env.VER }}
+          name: Colección de autos v${{ env.VER }}
           body: "Versión ${{ env.VER }} · compilación ${{ github.run_number }}. Los cambios de cada versión están en CAMBIOS.md."
-          files: muro-de-carritos-v${{ env.VER }}.apk
+          files: coleccion-de-autos-v${{ env.VER }}.apk
           make_latest: true

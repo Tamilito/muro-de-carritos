@@ -1,6 +1,6 @@
 {
   "appId": "mx.murodecarritos.app",
-  "appName": "Muro de Carritos",
+  "appName": "Colección de autos",
   "webDir": "www",
   "android": {
     "adjustMarginsForEdgeToEdge": "auto",

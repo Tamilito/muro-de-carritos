@@ -5,8 +5,13 @@ Cómo se numeran las versiones (X.Y.Z):
 - **Y** sube con funciones nuevas (1.1 → 1.2).
 - **X** sube con un cambio grande que rehace la app (1.x → 2.0).
 
-La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.5.0';`.
+La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.6.0';`.
 GitHub la lee de ahí para nombrar el APK y el Release. El número de compilación sube solo.
+
+## 1.6.0 (4 nov 2026)
+- La app ahora se llama **Colección de autos**, con ícono nuevo (el auto derrapando, sin fondo) y pantalla de inicio nueva. El nombre y el ícono del teléfono cambian al instalar el APK de esta versión; tus datos se quedan.
+- En **Mi garaje** cada tarjeta muestra la foto del carrito si la tiene, y trae el botón «Foto» para ponerle o cambiarle la foto ahí mismo (le quita el fondo blanco; si la imagen ya viene sin fondo, la respeta).
+- Los respaldos y la foto del muro ahora se guardan como "coleccion-de-autos…".
 
 ## 1.5.0 (4 nov 2026)
 - **Todo en tu teléfono, sin servidor.** Tus muros, carritos y fotos nunca salen del teléfono. Lo único que usa internet es buscar actualizaciones de la app.

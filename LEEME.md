@@ -1,4 +1,4 @@
-# Muro de Carritos para Android
+# Colección de autos para Android
 
 Este proyecto convierte el planeador del muro en una app Android (APK).
 GitHub la compila gratis en la nube; no necesitas instalar nada en tu compu.

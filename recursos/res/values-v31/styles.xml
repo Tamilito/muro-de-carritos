@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+: la pantalla de inicio muestra el auto en lugar del ícono de la app. -->
+<resources>
+    <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
+        <item name="android:background">@drawable/splash</item>
+        <item name="windowSplashScreenBackground">@color/splash_fondo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_auto</item>
+    </style>
+</resources>

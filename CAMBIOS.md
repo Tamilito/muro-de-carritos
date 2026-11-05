@@ -5,8 +5,24 @@ Cómo se numeran las versiones (X.Y.Z):
 - **Y** sube con funciones nuevas (1.1 → 1.2).
 - **X** sube con un cambio grande que rehace la app (1.x → 2.0).
 
-La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.7.0';`.
+La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.8.0';`.
 GitHub la lee de ahí para nombrar el APK y el Release. El número de compilación sube solo.
+
+## 1.8.0 (5 nov 2026)
+- **La foto del blíster sale siempre** en el muro, en el garaje y en el editor. Se quitó «Imagen: Catálogo / Mis fotos»: si el carrito tiene foto, se ve la foto; si no, el dibujo.
+- **Quitar el fondo hace menos desastre**: ya no se come las partes blancas del carrito cuando se tocan con el fondo blanco, quita las motitas sueltas y deja el borde más limpio.
+- **Ajustar fondo** (botón «Fondo» en el visor de fotos del auto y junto a la foto del blíster en el editor):
+  - Quitar fondo o Dejar fondo (la foto tal cual).
+  - «Cuánto quita»: menos si se está comiendo el carrito, más si quedan restos de fondo.
+  - Pincel para Borrar o Recuperar a mano, con tamaño. Con dos dedos se hace zoom; «Ver todo» regresa.
+  - Deshacer, Desde cero y Listo. Se puede volver a ajustar cuantas veces quieras, porque la app guarda la foto original aparte (también en el respaldo).
+  - Las fotos que subiste antes de esta versión no tienen original guardado: se pueden borrar partes con el pincel, pero lo que ya se quitó no regresa. Para eso, súbelas otra vez.
+- En el visor de fotos del auto, **la estrella** de arriba a la izquierda marca la principal: dorada si es la principal, gris si no. Tocar una gris la hace la principal. Se quitó el botón «Hacer principal».
+- En las tarjetas del garaje, «Ver» y «Fotos» quedaron solo con su ícono.
+- En el garaje se quitaron los filtros rápidos (Todos, Reales, Originales, De película, En la bandeja). Queda el buscador.
+- **Candado en la vista del muro**: el color del muro, Alejar, Tamaño y Separación vienen bloqueados para que no se muevan al pasar el dedo; si deslizas encima, se mueve la pantalla y no las barras. Toca el candado para cambiarlos y otra vez para bloquearlos. Cada vez que abres la app empiezan bloqueados.
+- **Arranque con un auto**: la pantalla de carga muestra el auto azul con flamas en lugar del ícono de la app; al abrir, el auto se acerca, acelera y se va. El encabezado lleva el auto rojo en lugar del ícono. El ícono del teléfono no cambia.
+- La pantalla de inicio nueva necesita instalar el APK de esta versión (trae un plugin nuevo). Lo demás también llega por actualización.
 
 ## 1.7.0 (5 nov 2026)
 - **Fotos del auto en Mi garaje**: hasta 3 por carrito (por ejemplo de frente, de lado y de atrás). Botón «Fotos» en cada tarjeta; puedes elegir varias de un jalón y la app les quita el fondo.

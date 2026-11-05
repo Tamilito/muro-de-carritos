@@ -5,8 +5,12 @@ Cómo se numeran las versiones (X.Y.Z):
 - **Y** sube con funciones nuevas (1.1 → 1.2).
 - **X** sube con un cambio grande que rehace la app (1.x → 2.0).
 
-La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.8.0';`.
+La versión vive en una sola línea de `www/index.html`: `var APP_VERSION='1.8.1';`.
 GitHub la lee de ahí para nombrar el APK y el Release. El número de compilación sube solo.
+
+## 1.8.1 (5 nov 2026)
+- Arreglado: en el teléfono, la foto del muro salía con huecos donde iban algunos blísters dibujados (los que quedaban justo antes de un blíster con foto). Ahora la app termina de pintar cada blíster antes de seguir con el siguiente y la imagen se arma sin usar la tarjeta de video del teléfono.
+- La foto del muro se genera más rápido (el fondo con textura se pinta de una vez) y, en muros muy grandes, ajusta un poco la resolución para no quedarse sin memoria.
 
 ## 1.8.0 (5 nov 2026)
 - **La foto del blíster sale siempre** en el muro, en el garaje y en el editor. Se quitó «Imagen: Catálogo / Mis fotos»: si el carrito tiene foto, se ve la foto; si no, el dibujo.
